@@ -1,0 +1,233 @@
+#2.2 variables
+    변수 선언 1
+        const 변수명 : 수정불가능
+                      (JS는 기본적으로 이걸 기본으로 씀)
+    
+    변수명 규칙
+        JS camel규칙 = myName
+        Python snake규칙 = my_Name
+
+#2.3 const & let
+    변수 선언 2
+        let 변수명 : 수정가능
+                    (이 경우 변수를 만들때만 let 부여)
+                    (변수 재정의시에는 그냥 변수명만 사용)
+        (old) var 변수명 : 수정가능
+                          (규칙이 없던 당시 오래된 JS에서 쓰던 유일한 변수 선언문)
+                          (현재는 쓰지않는게 추천됨)
+
+#2.4 booleans
+    또 다른 데이터 타입
+        true
+        flase
+        null : 이 자체로 "공백"이라는 하나의 값, 인위적으로 지정해야만 발생. ("없다"를 강조할 때 등)
+        undefined : 변수에 아무런 값도 할당하지 않았을때
+                    변수이름 자체는 메모리에 저장됨
+
+#2.5 Arrays
+    배열 작성법
+        const var_name = [v1, v2..];
+            데이터 타입은 섞일 수 있음
+            const 선언이라도, 내용물 추가는 가능
+
+        var_name.push(내용물) - array에 내용물 추가
+
+#2.6 object
+    객체 생성법
+        const var_name = {   (= 부호주의)
+            obj_name: value, (콤마주의)
+        };
+    
+    객체 불러오기 (같은거임)
+        var_name.obj_name;
+        var_name["obj_name"];
+
+    객체 내용물 추가하기 (그냥 새로운걸 지정하고 대입하면 끝)
+        var_name.obj_point = 123;
+
+#2.7 function P1
+    함수 생성법
+        function func_name() {
+            내용물
+        }
+
+#2.8 function P2
+    함수 파라미터 만드는 법
+        function func_name(nameOfPerson, age) {
+            console.log(nameOfPerson, age);
+        }
+        NaN : Not a Number
+    
+    오브젝트 안에서 함수 만들기
+        const player = {
+            name: "nico",
+            sayHello: function (otherPersonsName) {
+                console.log("hello " + otherPersonsName);
+            },
+        };
+
+#2.9 recap
+    아는거 복습 (생략)
+
+#2.11 return
+    함수 안에서 값만 뽑아 올때, 내부에 return을 입력
+        function test(val) {
+            return val + 2;
+            console.log("hello");  //이건 표시되지않음
+        }
+    
+    중요 : return을 마지막으로 함수는 정지하므로 그 이후 코드는 무시.
+
+#2.13 conditionals P1
+    몇몇 함수 소개
+        prompt("팝업 표시 메시지")
+            : 메시지를 보여주고 입력을 받기위한 함수
+              디자인이 구리고, 팝업형이며, css적용이 안돼서 최근엔 안쓰지만, 여기선 일단 써본다.
+        typeof <value>
+            : value의 타입을 알아보는 함수
+              괄호가 따로 없음을 주의해서 써라.
+        parseInt("숫자string")
+            : 숫자string을 number로 변형.
+        
+        parseInt(prompt("메시지")) 처럼 복합사용 가능
+
+#2.14 conditionals P2 
+    bool 함수 소개
+        isNaN(var)
+            : bool 리턴
+              false - var가 숫자임을 확인
+              true - var가 숫자가 아님을 확인 (개념주의)
+
+    if함수 쓰는 법
+        if(isNaN(age)) {
+            console.log("plz write a number");
+        }
+
+#2.15 conditionals P3
+    else if 조건 
+        if (val) {
+
+        } else if (val){
+
+        } else {
+
+        }
+        else if에도 조건이 들어간다는 것에 주의!
+
+#2.15 recap
+    비교연산자
+        && : and
+        || : or
+        <, >, <=, >= : 대소비교
+        ==  : 값만 비교
+        === : 값, 데이터 타입 동시 비교
+        !== : Not
+    
+    조건문은 조건 순서에 따라 실행자체가 안될 라인이 있을수도 있다.
+
+#3.0 Document object
+    document 객체 의미
+        console.dir(document) : html 속성 확인
+        => JS는 html 코드에 상호작용 가능하단걸 의미
+
+        예제)
+        document.title = "Hi"
+            // html title 변경
+    
+    console.log() : 내부 요소들을 보여줌
+    console.dir() : 내부 속성들을 보여줌
+
+#3.1 html in JS
+    JS에서 html id 특정하기
+        document.getElementById("id_var")
+            : html id로 해당 element 정보를 가져옴
+              해당 id의 각종 속성 변경가능
+
+#3.2 searching for elements in JS
+    JS에서 html element 선택하는 여러 방법
+        getElementsByClassName("class_name") -> array 반환
+        getElementsByTagName("tag_name") -> array 반환
+        querySelector("css식 select") -> element 반환 (nico이거씀)
+            : class 내부의 자식 등도 선택 가능
+              단, 여러개의 같은 class명, 태그명이 있다면 오로지 맨 위 하나만 픽업
+        querySelectorAll("css식 select") -> arrray 반환
+            : 여러개를 동시 픽업 가능
+
+        *여러개를 동시 선택할 수 있는 선택함수들은 모두 array를 반환
+
+#3.3 events P1
+    JS로 글자색 바꾸기 (예제)
+        const title = document.querySelector(".hello h1");
+        title.style.color = "blue";
+
+    eventlistner
+        element.addEventListner("이벤트종류", 함수명만) //함수의 괄호() 없이!!
+            : 이벤트종류가 일어날 때, 해당 함수명을 실행
+
+#3.4 events P2
+    event종류 찾는 법
+        console.dir(element)
+            : on~이 붙은 모든 것이 eventlistner.
+              eventlistner로 쓸 때는 on을 빼고 씀.
+        
+        (예제)
+        mouseenter : 마우스가 처음 올라올때
+        mouseleave : 마우스가 떠날때
+
+#3.5 more events
+    또 다른 이벤트 실행 방법
+        <1> element.addEventListner("click", func_name);
+        <2> element.onclick = func_name;
+
+        단, <2> 방법은 나중에 listner를 지울 수 없다.
+        (.removeListner()로 지우는걸 말함)
+        그러므로 <1>을 써라.
+    
+    window 이벤트 실행방법
+        document 처럼, window도 처음부터 내장되어있다.
+        
+        (예제)
+        window.addEventListner("resize", func_name);
+
+        (활용 event)
+        resize
+        copy
+        offline
+        online
+
+        <추가정보>
+        document.body.stlye.backgroundcolor
+        이처럼 document 에서는 body, header, title과 같은 큼직한 속성에만 접근가능
+        이전에 만들어둔 body안의 div, h1에는 접근 불가능 (따로 querySelector로 불러와야 함)
+
+#3.6 CSS in JS P1
+    같은 event와 함수를 조건넣어서 여러번 쓰기
+        #3.6.js 코드 참조
+
+        그러나, 이건 결국 JS에서 직접 style을 바꾸는거라 nico는 별로 안좋아함.
+        JS에서 css를 통해 style을 바꿔보자.
+
+#3.7 CSS in JS P2
+    JS에서 style을 바꾸고 싶을땐, 미리 CSS에 해당 클래스를 정의하고 JS에서 element에 클래스만 추가해주는 형식을 적용해라.
+
+    (예제)
+    h1.className === "css_class_name";
+        
+        css_class_name은 미리 변수로 지정해주면 변경시 실수를 줄일 수 있다.
+
+        단, 이 방법은 기존 element의 class를 덮어씌운다는 문제점이 있다.
+        해결책은 #3.8에서 강의한다.
+
+#3.8 CSS in JS P3
+    JS에서 class를 덮어씌우지 않고 추가하는 법
+        .classList.contain("class_name") : class_name을 포함하는지 확인
+        .classList.remove("class_name")  : class_name을 삭제
+        .classList.add("class_name")     : class_name을 추가
+        
+        ↓ 세 기능을 단 한줄로 통합하는 함수
+
+        .classList.toggle("class_name")  : 포함 확인 / 있으면 삭제 / 없으면 추가
+        (모든 JS class관련은 toggle하나로 거진 OK)
+
+
+#4단원 부터는 JS.md로 대체
