@@ -1,3 +1,47 @@
 .hidden {
   display: none;
 }
+
+body {
+  color: aliceblue;
+  position: relative;
+  margin: 0;
+}
+
+.texts {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.texts button {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+#todo-form input {
+  width: 200px;
+  text-align: center;
+}
+
+#weather {
+  margin-top: 20px;
+}
+
+#clock {
+  font-size: 60px;
+  margin: 0;
+}
+
+img {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
